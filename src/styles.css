@@ -11,17 +11,20 @@ body {
   max-height: 400px;
   background-color: blanchedalmond;
   color: rgb(6, 41, 6);
-  margin-top: 30px;
+  margin-top: 150px;
   margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px 10px;
+  border-radius: 20px;
 }
 #controls,
 #stats {
   border: 2px solid darkgreen;
   color: rgb(92, 91, 91);
   padding: 5px;
+  display: flex;
+  justify-content: center;
 }
 #monsterStats {
   display: none;
