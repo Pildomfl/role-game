@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles.css" />
     <title>Role Game</title>
-    <script src="/src/script.js"></script>
   </head>
   <body>
     <div id="game">
@@ -36,8 +35,22 @@
         <button id="button2">Go to cave</button>
         <button id="button3">Fight dragon</button>
       </div>
-      <div id="monsterStats"></div>
-      <div id="text"></div>
+      <div id="monsterStats">
+        <span class="stat">
+          Monster Name:
+          <strong><span id="monsterName"></span></strong>
+        </span>
+        <span class="stat">
+          Health:
+          <strong><span id="monsterHealth"></span></strong>
+        </span>
+      </div>
+      <div id="text">
+        Welcome to this nice adventure game. You must defeat the mighty dragon
+        that dominates the city. You are in the town square, where do you want
+        to go? you can use the buttons to start!
+      </div>
     </div>
+    <script src="/src/script.js"></script>
   </body>
 </html>
