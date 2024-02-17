@@ -51,6 +51,12 @@ const locations = [
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters.",
   },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, run],
+    text: "You are fighting a monster.",
+  },
 ];
 //initialize buttons
 button1.onclick = goStore;
@@ -75,8 +81,6 @@ function goStore() {
 function goCave() {
   update(locations[2]);
 }
-function fightDragon() {}
-function goFight() {}
 
 function buyHealth() {
   if (gold >= 10) {
@@ -112,7 +116,20 @@ function fightSlime() {
   fighting = 0;
   goFight();
 }
-function fightBeast() {}
+function fightBeast() {
+  fighting = 1;
+  goFight();
+}
+function fightDragon() {
+  fighting = 2;
+  goFight();
+}
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.computedStyleMap.display = "block";
+}
+
 function sellWeapon() {
   if (inventory.length > 1) {
     gold += 15;
@@ -125,3 +142,5 @@ function sellWeapon() {
     text.innerText = "Don't sell your only weapon!";
   }
 }
+function attack() {}
+function dodge() {}
