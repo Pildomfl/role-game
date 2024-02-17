@@ -76,10 +76,7 @@ function goCave() {
   update(locations[2]);
 }
 function fightDragon() {}
-function goFight() {
-  fighting = 0;
-  goFight();
-}
+function goFight() {}
 
 function buyHealth() {
   if (gold >= 10) {
@@ -111,7 +108,10 @@ function buyWeapon() {
     button2.onclick = sellWeapon;
   }
 }
-function fightSlime() {}
+function fightSlime() {
+  fighting = 0;
+  goFight();
+}
 function fightBeast() {}
 function sellWeapon() {
   if (inventory.length > 1) {
