@@ -73,20 +73,38 @@ function goCave() {
 function fightDragon() {}
 
 function buyHealth() {
-  function buyHealth() {
-    if (gold >= 10) {
-      gold -= 10;
-      health += 10;
-      goldText.innerText = gold;
-      healthText.innerText = health;
-    } else {
-      text.innerText = "You do not have enough gold to buy health.";
-    }
+  if (gold >= 10) {
+    gold -= 10;
+    health += 10;
+    goldText.innerText = gold;
+    healthText.innerText = health;
+  } else {
+    text.innerText = "You do not have enough gold to buy health.";
   }
 }
+
 function buyWeapon() {
-  if (gold >= 30) {
+  if (currentWeapon < weapons.length - 1) {
+    if (gold >= 30) {
+      gold -= 30;
+      currentWeapon++;
+      goldText.innerText = gold;
+      let newWeapon = weapons[currentWeapon].name;
+      text.innerText = "You now have a." + newWeapon + ".";
+      inventory.push(newWeapon);
+      text.innerText += " In you inventory you have: " + inventory;
+    } else {
+      text.innerText = "You do not have enough gold to buy a weapon.";
+    }
+  } else {
+    text.innerText = "You already have the most powerful weapon!";
+    button2.innerText = "Sell weapon for 15 gold";
+    button2.onclick = sellWeapon;
   }
 }
 function fightSlime() {}
 function fightBeast() {}
+function sellWeapon() {
+  if (inventory.length > 1) {
+  }
+}
