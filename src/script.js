@@ -23,6 +23,11 @@ const weapons = [
   { name: "claw hammer", power: 50 },
   { name: "sword", power: 100 },
 ];
+const monsters = [
+  { name: "slime", level: 2, health: 15 },
+  { name: "fanged beast", level: 8, health: 60 },
+  { name: "dragon", level: 20, health: 300 },
+];
 const locations = [
   {
     name: "town square",
@@ -111,5 +116,8 @@ function sellWeapon() {
     let currentWeapon = inventory.shift();
     text.innerText = "You sold a " + currentWeapon + ".";
     text.innerText += " In your inventory you have: " + inventory;
+  } else {
+    inventory.length < 1;
+    text.innerText = "Don't sell your only weapon!";
   }
 }
