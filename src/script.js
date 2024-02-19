@@ -79,6 +79,12 @@ const locations = [
     "button functions": [restart, restart, restart],
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
   },
+  {
+    name: "easter egg",
+    "button text": ["2", "8", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
+  },
 ];
 //initialize buttons
 button1.onclick = goStore;
@@ -173,12 +179,12 @@ function attack() {
     " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
-monsterHealth -=
-    weapons[currentWeapon].power + Mathfloor(Math.random() * xp) + 1;
+    monsterHealth -=
+      weapons[currentWeapon].power + Mathfloor(Math.random() * xp) + 1;
   } else {
     text.innerText += " You miss.";
   }
-    healthText.innerText = health;
+  healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
     lose();
@@ -190,18 +196,21 @@ monsterHealth -=
   } else {
     defeatMonster();
   }
+  if (Math.random() <= 0.1 && inventory.length !== 1) {
+    text.innerText += "Your " + inventory.pop() + " breaks.";
+    currentWeapon--;
+  }
 }
-  
-  
+
 // attack based on monster´s level and xp
 function getMonsterAttackValue(level) {
   const hit = level * 5 - Math.floor(Math.random() * xp);
   console.log(hit);
-  return hit > 0 ? hit= 0
+  return hit > 0 ? hit : 0;
 }
 
-function isMonsterHit () {
-return Math.random() > .2;
+function isMonsterHit() {
+  return Math.random() > 0.2 || health < 20;
 }
 function dodge() {
   text.innerText =
@@ -232,4 +241,21 @@ function restart() {
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
+}
+
+function easterEgg() {
+  update(locations[7]);
+}
+
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+}
+function pickTwo() {
+  pick(2);
+}
+function pickEight() {
+  pick(8);
 }
